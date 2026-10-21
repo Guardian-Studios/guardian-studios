@@ -1,0 +1,55 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.contact {
+  padding-block: 44px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-contact-fade-start),
+      var(--color-contact-fade-end)
+    ),
+    url("/images/contact.jpg") center 58% / cover;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: start;
+}
+
+.contact h2 {
+  margin-top: 20px;
+  margin-bottom: 18px;
+}
+
+.contact p {
+  max-width: 400px;
+}
+
+.selected-need {
+  margin-top: 24px;
+  font-size: var(--type-small);
+}
+
+@include mixins.down(variables.$breakpoint-tablet) {
+  .contact-inner {
+    gap: 36px;
+  }
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .contact h2 {
+    margin-top: 0;
+  }
+}
+
+.contact-inner > * {
+  min-width: 0;
+}

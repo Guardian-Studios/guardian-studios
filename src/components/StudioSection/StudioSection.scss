@@ -1,0 +1,90 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.studio {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--color-studio-bg);
+}
+
+.studio-art {
+  min-height: 440px;
+  overflow: hidden;
+}
+
+.studio-art img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.studio-copy {
+  padding: 64px clamp(28px, 5vw, 80px) 50px 50px;
+  max-width: 680px;
+}
+
+.studio h2 {
+  margin-bottom: 22px;
+}
+
+.studio p + p {
+  margin-top: 12px;
+}
+
+.values {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+  padding: 24px 0 0;
+  margin: 26px 0 0;
+  border-top: 1px solid var(--color-values-divider);
+  font-size: var(--type-caption);
+  color: var(--color-muted);
+}
+
+.values li {
+  flex: 1;
+}
+
+.values li::before {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-accent);
+  border-radius: 2px;
+  transform: rotate(45deg);
+  margin-bottom: 14px;
+}
+
+@include mixins.down(variables.$breakpoint-tablet) {
+  .studio-copy {
+    padding: 40px 28px;
+  }
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .studio {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-art {
+    min-height: 0;
+    max-height: 300px;
+  }
+
+  .studio-art img {
+    aspect-ratio: 1.5;
+    object-position: center;
+  }
+
+  .studio-copy {
+    padding: 36px 20px 40px;
+  }
+
+  .values {
+    gap: 18px;
+    font-size: var(--type-caption);
+  }
+}

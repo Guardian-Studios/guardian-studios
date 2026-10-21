@@ -1,0 +1,88 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.process {
+  padding-block: 60px;
+}
+
+.process-intro {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  align-items: center;
+}
+
+.process-intro > p {
+  max-width: 390px;
+  font-size: 18px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  margin: 42px 0 0;
+  gap: 28px;
+}
+
+.steps li {
+  counter-increment: step;
+  border-right: 1px solid var(--color-step-divider);
+  padding-right: 28px;
+}
+
+.steps li:last-child {
+  border: 0;
+}
+
+.steps li::before {
+  content: "0" counter(step);
+  display: block;
+  color: var(--color-step-number);
+  font-size: var(--type-small);
+  margin-bottom: 18px;
+}
+
+.steps h3 {
+  margin-bottom: 10px;
+}
+
+.steps p {
+  font-size: var(--type-small);
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .process {
+    padding-block: 40px;
+  }
+
+  .process-intro {
+    display: block;
+  }
+
+  .process-intro > p {
+    margin-top: 22px;
+    font-size: 16px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 20px;
+    margin-top: 32px;
+  }
+
+  .steps li {
+    padding-right: 14px;
+  }
+
+  .steps li:nth-child(2) {
+    border: 0;
+  }
+}
+
+.steps li,
+.process-intro > * {
+  min-width: 0;
+}

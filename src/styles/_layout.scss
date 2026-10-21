@@ -1,0 +1,23 @@
+@use "variables";
+@use "mixins";
+
+.wrap {
+  width: min(var(--content-width), calc(100% - 96px));
+  margin-inline: auto;
+}
+
+.section {
+  border-bottom: 1px solid var(--color-divider);
+}
+
+@include mixins.down(variables.$breakpoint-tablet) {
+  .wrap {
+    width: calc(100% - 48px);
+  }
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .wrap {
+    width: calc(100% - 40px);
+  }
+}

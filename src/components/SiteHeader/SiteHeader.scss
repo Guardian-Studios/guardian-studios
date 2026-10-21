@@ -1,0 +1,84 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  min-height: 110px;
+  position: relative;
+  z-index: 1;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.site-header nav a {
+  font-size: var(--type-caption);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-nav);
+}
+
+.site-header nav a:hover {
+  color: var(--color-accent);
+}
+
+@include mixins.down(variables.$breakpoint-tablet) {
+  .site-header {
+    gap: 18px;
+  }
+
+  .site-header nav {
+    gap: 18px;
+  }
+
+  .site-header .button {
+    padding: 10px 16px;
+  }
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .site-header {
+    min-height: 130px;
+    flex-wrap: wrap;
+    padding-block: 20px;
+    gap: 14px;
+  }
+
+  .site-header nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .site-header nav a {
+    font-size: var(--type-caption);
+    min-height: 32px;
+  }
+
+  .site-header .button {
+    min-height: 38px;
+    font-size: var(--type-caption);
+    padding: 8px 14px;
+  }
+}
+
+.site-header nav a {
+  font-size: var(--type-small);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .site-header nav a {
+    font-size: var(--type-caption);
+  }
+}

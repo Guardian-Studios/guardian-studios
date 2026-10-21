@@ -1,0 +1,31 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.brand {
+  padding: 0.375rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand picture {
+  display: block;
+}
+
+.brand img {
+  width: 240px;
+  height: auto;
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .brand {
+    padding: 0.3rem;
+  }
+
+  .brand img {
+    width: 40px;
+    height: 40px;
+  }
+}

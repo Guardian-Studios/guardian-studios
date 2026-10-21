@@ -1,0 +1,97 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.hero-shell {
+  --hero-image: url("/images/arch.png");
+  position: relative;
+  isolation: isolate;
+  background: var(--color-bg);
+}
+
+// Keep the image and its contrast gradients aligned at every viewport width.
+.hero-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto auto;
+  width: min(74%, 1000px);
+  height: 100%;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 80%, var(--color-bg) 100%),
+    linear-gradient(
+      90deg,
+      var(--color-bg) 0%,
+      var(--color-hero-fade-start) 12%,
+      var(--color-hero-fade-middle) 55%,
+      var(--color-hero-fade-end) 100%
+    ),
+    var(--hero-image) center 35% / cover no-repeat;
+}
+
+.hero {
+  position: relative;
+  min-height: 740px;
+  padding-block: 64px 60px;
+}
+
+.hero-copy {
+  position: relative;
+  max-width: 540px;
+  animation: arrive var(--motion-enter) var(--ease-out);
+}
+
+.hero-copy > p {
+  max-width: 400px;
+  margin: 20px 0 26px;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+@keyframes arrive {
+  from {
+    transform: translateY(12px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@include mixins.down(variables.$breakpoint-tablet) {
+  .hero {
+    min-height: 700px;
+  }
+
+  .hero-copy {
+    max-width: 420px;
+  }
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .hero-shell::before {
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      var(--color-mobile-hero-start),
+      var(--color-mobile-hero-end)
+    ),
+    var(--hero-image) center / cover no-repeat;
+  }
+  .hero {
+    padding-block: 46px;
+    min-height: 700px;
+  }
+
+  .hero-copy {
+    max-width: 440px;
+  }
+
+  .hero-copy > p {
+    font-size: 18px;
+    max-width: 340px;
+  }
+}
+
+.hero-copy > p {
+  font-size: var(--type-lead);
+  line-height: 1.55;
+}

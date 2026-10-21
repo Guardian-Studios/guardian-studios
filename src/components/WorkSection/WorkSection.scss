@@ -1,0 +1,106 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.work {
+  position: relative;
+  isolation: isolate;
+  padding-block: 60px 38px;
+  background: var(--color-bg);
+}
+
+// Keep all fades inside the artwork bounds so its edge cannot form a seam.
+.work::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 0 auto;
+  width: 65%;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-bg) 0%,
+      var(--color-work-fade-start) 30%,
+      var(--color-work-fade-end) 100%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-bg) 0%,
+      transparent 18%,
+      transparent 48%,
+      var(--color-bg) 100%
+    ),
+    url("/images/waterfall.png") center / cover no-repeat;
+}
+
+.work-intro {
+  max-width: 420px;
+}
+
+.work h2 {
+  margin-bottom: 16px;
+}
+
+.work-intro p {
+  max-width: 360px;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 24px;
+}
+
+.projects img {
+  width: 100%;
+  aspect-ratio: 312/198;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.projects figcaption {
+  position: relative;
+  padding-top: 16px;
+  padding-right: 0;
+}
+
+.projects h3 {
+  margin-bottom: 5px;
+}
+
+.projects p {
+  font-size: var(--type-small);
+}
+
+.projects small {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: var(--type-caption);
+  color: var(--color-project-caption);
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .work {
+    padding-block: 40px;
+  }
+
+  .work::before {
+    width: 100%;
+    height: 540px;
+    bottom: auto;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .projects figcaption {
+    padding-right: 0;
+  }
+}
+
+.projects figure {
+  min-width: 0;
+}

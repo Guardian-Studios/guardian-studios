@@ -1,0 +1,81 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.site-footer nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.site-footer nav a {
+  font-size: var(--type-caption);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-nav);
+}
+
+.site-footer nav a:hover {
+  color: var(--color-accent);
+}
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 28px;
+}
+
+.site-footer nav {
+  gap: 22px;
+}
+
+.site-footer p {
+  text-align: right;
+  font-size: var(--type-caption);
+}
+
+@include mixins.down(variables.$breakpoint-tablet) {
+  .site-footer {
+    flex-wrap: wrap;
+  }
+
+  .site-footer nav {
+    gap: 16px;
+  }
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .site-footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .site-footer nav {
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .site-footer nav a {
+    font-size: var(--type-caption);
+  }
+
+  .site-footer p {
+    text-align: left;
+  }
+}
+
+.site-footer nav a {
+  font-size: var(--type-small);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .site-footer nav a {
+    font-size: var(--type-caption);
+  }
+}

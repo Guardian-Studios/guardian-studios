@@ -1,0 +1,87 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.service-picker {
+  max-width: 365px;
+  padding: 22px;
+  border: 1px solid var(--color-input-border);
+  border-radius: 12px;
+  background: var(--color-picker-bg);
+}
+
+.service-picker fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.service-picker legend {
+  font-size: 19px;
+  font-weight: 500;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.service {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  min-height: 47px;
+  border: 1px solid var(--color-option-border);
+  border-radius: 5px;
+  margin-bottom: 8px;
+  font-size: var(--type-small);
+  padding: 8px 12px;
+  cursor: pointer;
+  background: var(--color-option-bg);
+}
+
+.service.selected {
+  border-color: var(--color-accent);
+  background: linear-gradient(
+    90deg,
+    var(--color-option-selected-start),
+    var(--color-option-selected-end)
+  );
+  color: var(--color-option-selected-text);
+}
+
+.service input {
+  accent-color: var(--color-accent);
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.service-index {
+  font-size: var(--type-caption);
+  width: 23px;
+  color: var(--color-option-icon);
+}
+
+.service-picker .button {
+  display: flex;
+  width: 100%;
+  margin-top: 8px;
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .service-picker {
+    max-width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+  }
+
+  .service {
+    min-height: 46px;
+  }
+}
+
+.service {
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  font-weight: 500;
+  line-height: 1.4;
+}

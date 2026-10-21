@@ -1,0 +1,53 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.mvp {
+  padding-block: 44px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-mvp-fade-start),
+      var(--color-mvp-fade-end)
+    ),
+    url("/images/portal4.png") center 65% / cover;
+}
+
+.mvp-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 60px;
+  align-items: center;
+  max-width: 1040px;
+}
+
+.upload-icon {
+  width: 170px;
+  color: var(--color-upload-icon);
+  justify-self: center;
+}
+
+.mvp h2 {
+  margin-bottom: 16px;
+}
+
+.mvp p {
+  margin-bottom: 12px;
+  max-width: 640px;
+}
+
+.mvp .button {
+  width: min(360px, 100%);
+  max-width: 100%;
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .mvp-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .upload-icon {
+    width: 100px;
+    justify-self: start;
+  }
+}
