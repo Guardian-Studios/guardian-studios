@@ -14,7 +14,7 @@ npm run build
 npm run preview
 ```
 
-Deploy the generated `dist/` directory to any static host. No server runtime or environment secrets are required. Source repository: [Astralis-Develop/guardian-studios](https://github.com/Astralis-Develop/guardian-studios) (private). Hosting has not been configured.
+Deploy the generated `dist/` directory to any static host. No server runtime or environment secrets are required. Source repository: [Guardian-Studios/guardian-studios](https://github.com/Guardian-Studios/guardian-studios) (private). Hosting has not been configured.
 
 ## Project structure
 
