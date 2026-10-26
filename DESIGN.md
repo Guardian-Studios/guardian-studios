@@ -13,3 +13,7 @@ The owner supplied the homepage composition and confirmed implementing it. Prese
 - Mobile stacks every split layout, retains visible navigation and a single-column form.
 
 Verification: inspect desktop and mobile together; one batch of corrections and at most one confirmation pass.
+
+## Approved component selection — 2026-10-26
+
+The owner selected original C Hero, new C Team and timeline Steps, original B Ideas/work, main MVP, and original A form. Preserve the existing brand world and the selected component composition. Old variant source was lost with temporary folders; Hero, Work and Contact are reconstructed from recovered browser DOM/CSS rather than represented as exact source cherry-picks. Team/Steps are copied from the approved durable C preview. Keep main MVP unchanged. No global font/brand replacement.

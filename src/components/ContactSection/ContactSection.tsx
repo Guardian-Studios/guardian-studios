@@ -10,14 +10,24 @@ export function ContactSection({ service }: ContactSectionProps) {
       aria-labelledby="contact-title"
     >
       <div className="wrap contact-inner">
-        <div>
-          <h2 id="contact-title">Hablemos de tu proyecto</h2>
+        <div className="contact-copy">
+          <h2 id="contact-title">
+            Empecemos
+            <br />
+            por tu idea.
+          </h2>
           <p>
-            Contanos un poco sobre tu idea. Podemos empezar por lo que tenés en
-            mente.
+            Contanos qué querés lograr. Buscamos una solución a tu medida, sin
+            importar el tamaño de tu proyecto.
           </p>
-          <p className="selected-need">
-            Tu punto de partida: <strong>{service}</strong>
+          <div className="selected-need">
+            <span>Tu punto de partida</span>
+            <strong>{service}</strong>
+            <a href="#servicios">Cambiar servicio</a>
+          </div>
+          <p className="contact-note">
+            Prepará y descargá tu consulta para compartirla. Este formulario no
+            envía mensajes al estudio.
           </p>
         </div>
         <ContactForm service={service} />

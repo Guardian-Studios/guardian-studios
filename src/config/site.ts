@@ -17,6 +17,28 @@ export const site = {
     "Mejorar lo que ya tengo",
     "Todavía no lo sé",
   ],
+  servicePrompts: [
+    {
+      question: "¿Qué debería poder hacer tu sitio?",
+      description:
+        "Podemos empezar por las personas que lo van a visitar y lo que querés que encuentren.",
+    },
+    {
+      question: "¿Qué necesitás hacer más simple?",
+      description:
+        "Contanos la tarea o la experiencia que imaginás para tu aplicación.",
+    },
+    {
+      question: "¿Qué te gustaría mejorar?",
+      description:
+        "Podemos empezar por lo que ya tenés y lo que querés que funcione mejor.",
+    },
+    {
+      question: "Empecemos por tu idea.",
+      description:
+        "Contanos qué querés lograr. No hace falta tener todos los detalles resueltos.",
+    },
+  ],
   team: [
     { title: "Diseño y experiencia", image: "team-design.jpg" },
     { title: "Desarrollo y tecnología", image: "team-development.jpg" },

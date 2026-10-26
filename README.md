@@ -48,3 +48,13 @@ Section IDs and `data-motion` attributes are stable animation targets. Add motio
 5. Check production performance after adding animation.
 
 No fabricated contact info, analytics, tracking or credentials are included. CI runs lint and the production build on pull requests and pushes to main.
+
+## Selected homepage composition (2026-10-26)
+
+Hero: original C portal explorer, reconstructed from saved rendered markup/styles.
+Team and Process: new C featured discipline selector and interactive timeline.
+Work/Ideas: original B staggered editorial project layout, reconstructed from saved styles.
+MVP: main component and styles preserved verbatim.
+Contact/form: original A layout reconstructed from saved markup/styles; inquiry preparation/download restored with stale-output invalidation on service or input changes.
+
+All sections keep their own named folders and adjacent SCSS. `Arrow` is the shared decorative SVG; `site.servicePrompts` owns the service-specific introductory questions. App retains shared service state. No new dependencies. The form saves locally and does not send messages.

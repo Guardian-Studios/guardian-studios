@@ -2,86 +2,130 @@
 @use "../../styles/mixins";
 
 .service-picker {
-  max-width: 365px;
-  padding: 22px;
-  border: 1px solid var(--color-input-border);
-  border-radius: 12px;
-  background: var(--color-picker-bg);
+  background: var(--color-surface);
+  padding: 28px 36px 22px;
+  border-top: 1px solid var(--color-accent);
 }
 
 .service-picker fieldset {
   border: 0;
-  margin: 0;
   padding: 0;
+  margin: 0;
   min-width: 0;
 }
 
 .service-picker legend {
-  font-size: 19px;
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-size: var(--type-h4);
   padding: 0;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.service-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .service {
   display: flex;
-  gap: 14px;
   align-items: center;
-  min-height: 47px;
-  border: 1px solid var(--color-option-border);
-  border-radius: 5px;
-  margin-bottom: 8px;
-  font-size: var(--type-small);
-  padding: 8px 12px;
+  gap: 10px;
+  padding: 16px 12px;
+  border: 1px solid var(--color-input-border);
   cursor: pointer;
-  background: var(--color-option-bg);
-}
-
-.service.selected {
-  border-color: var(--color-accent);
-  background: linear-gradient(
-    90deg,
-    var(--color-option-selected-start),
-    var(--color-option-selected-end)
-  );
-  color: var(--color-option-selected-text);
+  font-size: var(--type-small);
+  min-height: 60px;
+  transition:
+    background var(--motion-fast),
+    border-color var(--motion-fast);
 }
 
 .service input {
-  accent-color: var(--color-accent);
   width: 16px;
   height: 16px;
+  accent-color: var(--color-accent);
+  flex-shrink: 0;
   margin: 0;
+}
+
+.service.selected {
+  background: var(--color-portal-selected);
+  border-color: var(--color-accent);
+}
+
+.service:hover {
+  background: var(--color-outline-hover);
+}
+
+.service:has(:focus-visible) {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+.service-route {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding-top: 24px;
+}
+
+.service-context {
+  min-height: 72px;
+}
+
+.service-context .service-question {
+  font-family: var(--font-heading);
+  font-size: var(--type-h4);
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.service-context > p:last-child {
+  font-size: var(--type-small);
+  max-width: 58ch;
+}
+
+.service-route .button {
   flex-shrink: 0;
 }
 
-.service-index {
-  font-size: var(--type-caption);
-  width: 23px;
-  color: var(--color-option-icon);
-}
-
-.service-picker .button {
-  display: flex;
-  width: 100%;
-  margin-top: 8px;
+.explore-process {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--type-small);
+  color: var(--color-accent);
+  min-height: 44px;
+  margin-top: 12px;
+  text-decoration-thickness: 1px;
 }
 
 @include mixins.down(variables.$breakpoint-mobile) {
   .service-picker {
-    max-width: 100%;
-    margin-top: 30px;
-    padding: 20px;
+    padding: 24px 20px 16px;
   }
-
+  .service-options {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
   .service {
-    min-height: 46px;
+    padding: 12px 10px;
+    font-size: var(--type-caption);
   }
-}
-
-.service {
-  font-family: var(--font-body);
-  font-size: var(--type-body);
-  font-weight: 500;
-  line-height: 1.4;
+  .service-route {
+    display: block;
+    padding-top: 22px;
+  }
+  .service-route .button {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .service-context {
+    min-height: 110px;
+  }
+  .explore-process {
+    font-size: var(--type-caption);
+  }
 }

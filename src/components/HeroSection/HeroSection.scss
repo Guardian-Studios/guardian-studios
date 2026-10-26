@@ -2,96 +2,106 @@
 @use "../../styles/mixins";
 
 .hero-shell {
-  --hero-image: url("/images/arch.png");
-  position: relative;
-  isolation: isolate;
   background: var(--color-bg);
-}
-
-// Keep the image and its contrast gradients aligned at every viewport width.
-.hero-shell::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto auto;
-  width: min(74%, 1000px);
-  height: 100%;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, transparent 80%, var(--color-bg) 100%),
-    linear-gradient(
-      90deg,
-      var(--color-bg) 0%,
-      var(--color-hero-fade-start) 12%,
-      var(--color-hero-fade-middle) 55%,
-      var(--color-hero-fade-end) 100%
-    ),
-    var(--hero-image) center 35% / cover no-repeat;
 }
 
 .hero {
   position: relative;
-  min-height: 740px;
-  padding-block: 64px 60px;
+  isolation: isolate;
+  padding-top: 34px;
+}
+
+.portal-landscape {
+  position: absolute;
+  inset: 0 0 150px;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.portal-landscape img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+  animation: portal-open var(--motion-portal) var(--ease-out);
+}
+
+.portal-landscape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    var(--color-bg),
+    var(--color-portal-scrim) 35%,
+    transparent 66%,
+    var(--color-bg)
+  );
 }
 
 .hero-copy {
   position: relative;
-  max-width: 540px;
-  animation: arrive var(--motion-enter) var(--ease-out);
+  text-align: center;
+}
+
+.hero-copy h1 {
+  max-width: 850px;
+  margin-inline: auto;
+  font-size: var(--type-display);
 }
 
 .hero-copy > p {
-  max-width: 400px;
-  margin: 20px 0 26px;
-  font-size: 20px;
-  line-height: 1.55;
+  max-width: 560px;
+  margin: 24px auto 0;
+  font-size: var(--type-lead);
 }
 
-@keyframes arrive {
+.portal-caption {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding-top: 210px;
+  padding-bottom: 28px;
+  font-size: var(--type-caption);
+  color: var(--color-text);
+}
+
+.hero-explorer {
+  position: relative;
+}
+
+@keyframes portal-open {
   from {
-    transform: translateY(12px);
+    transform: scale(1.04);
+    filter: brightness(0.7);
   }
   to {
-    transform: translateY(0);
+    transform: scale(1);
+    filter: brightness(1);
   }
 }
-
-@include mixins.down(variables.$breakpoint-tablet) {
-  .hero {
-    min-height: 700px;
-  }
-
-  .hero-copy {
-    max-width: 420px;
-  }
-}
-
 @include mixins.down(variables.$breakpoint-mobile) {
-  .hero-shell::before {
-    width: 100%;
-    background: linear-gradient(
-      90deg,
-      var(--color-mobile-hero-start),
-      var(--color-mobile-hero-end)
-    ),
-    var(--hero-image) center / cover no-repeat;
-  }
   .hero {
-    padding-block: 46px;
-    min-height: 700px;
+    padding-top: 26px;
   }
-
-  .hero-copy {
-    max-width: 440px;
+  .hero-copy h1 {
+    font-size: clamp(2.3rem, 8.7vw, 3.4rem);
   }
-
   .hero-copy > p {
-    font-size: 18px;
-    max-width: 340px;
+    font-size: 1rem;
+    margin-top: 20px;
   }
-}
-
-.hero-copy > p {
-  font-size: var(--type-lead);
-  line-height: 1.55;
+  .portal-landscape {
+    bottom: 420px;
+  }
+  .portal-landscape img {
+    object-position: 48% 50%;
+  }
+  .portal-caption {
+    padding-top: 185px;
+    padding-bottom: 20px;
+  }
+  .portal-caption span:last-child {
+    display: none;
+  }
 }

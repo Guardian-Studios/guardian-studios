@@ -1,16 +1,27 @@
-import { Button } from "../Button/Button";
-import { InquirySummary } from "../InquirySummary/InquirySummary";
 import { useState } from "react";
+import { Button } from "../Button/Button";
+import { Arrow } from "../Arrow/Arrow";
+import { InquirySummary } from "../InquirySummary/InquirySummary";
 import { site } from "../../config/site";
-
 interface ContactFormProps {
   service: string;
 }
-
 export function ContactForm({ service }: ContactFormProps) {
   const [summary, setSummary] = useState("");
   const [status, setStatus] = useState("");
+  const [previousService, setPreviousService] = useState(service);
+  // Invalidate prepared output while keeping the uncontrolled fields mounted.
+  if (previousService !== service) {
+    setPreviousService(service);
+    setSummary("");
+    setStatus("");
+  }
+  function invalidate() {
+    setSummary("");
+    setStatus("");
+  }
   function saveInquiry() {
+    if (!summary || previousService !== service) return;
     const url = URL.createObjectURL(
       new Blob([summary], { type: "text/plain;charset=utf-8" }),
     );
@@ -21,10 +32,10 @@ export function ContactForm({ service }: ContactFormProps) {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
     setStatus("Consulta guardada. Aún no se ha enviado al estudio.");
   }
-
   return (
     <form
       className="contact-form"
+      onChange={invalidate}
       onSubmit={(event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -65,13 +76,15 @@ export function ContactForm({ service }: ContactFormProps) {
         placeholder="¿Qué te gustaría construir?"
       />
       <Button type="submit">
-        Preparar consulta <span aria-hidden="true">→</span>
+        Preparar consulta <Arrow />
       </Button>
       <p className="form-note">
         Prepará tu consulta para compartirla con el estudio.
       </p>
       <p role="status">{status}</p>
-      {summary && <InquirySummary summary={summary} onSave={saveInquiry} />}
+      {summary && previousService === service && (
+        <InquirySummary summary={summary} onSave={saveInquiry} />
+      )}
     </form>
   );
 }

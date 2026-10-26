@@ -3,6 +3,11 @@ $breakpoint-tablet: 1000px;
 $breakpoint-mobile: 700px;
 
 :root {
+  --motion-portal: 1100ms;
+  --color-portal-scrim: #050e0e99;
+  --color-portal-selected: #143934;
+  --space-chapter: clamp(64px, 9vw, 132px);
+  --type-editorial-title: clamp(2.25rem, 4.2vw, 4rem);
   --color-bg: #050e0e;
   --color-surface: #0c1a1a;
   --color-text: #e8efed;
@@ -17,7 +22,7 @@ $breakpoint-mobile: 700px;
   --font-heading: "Space Grotesk", Arial, sans-serif;
   --font-body: "Inter", Arial, sans-serif;
   --font-code: ui-monospace, "SFMono-Regular", Consolas, monospace;
-  --type-display: clamp(2.75rem, 1.6rem + 4.5vw, 5.5rem);
+  --type-display: clamp(2.75rem, 1.6rem + 3.8vw, 4.75rem);
   --type-h1: clamp(2.25rem, 1.5rem + 3vw, 4rem);
   --type-h2: clamp(1.875rem, 1.3rem + 2vw, 2.75rem);
   --type-h3: clamp(1.5rem, 1.2rem + 1vw, 1.75rem);

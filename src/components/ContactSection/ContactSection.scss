@@ -2,54 +2,66 @@
 @use "../../styles/mixins";
 
 .contact {
-  padding-block: 44px;
-  background:
-    linear-gradient(
-      90deg,
-      var(--color-contact-fade-start),
-      var(--color-contact-fade-end)
-    ),
-    url("/images/contact.jpg") center 58% / cover;
+  padding-block: 104px;
 }
 
 .contact-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 90px;
+  gap: 100px;
   align-items: start;
 }
 
-.contact h2 {
-  margin-top: 20px;
-  margin-bottom: 18px;
+.contact-copy h2 {
+  font-size: clamp(2.75rem, 5vw, 4.75rem);
 }
 
-.contact p {
-  max-width: 400px;
+.contact-copy > p {
+  margin-top: 24px;
+  max-width: 40ch;
 }
 
 .selected-need {
-  margin-top: 24px;
+  margin-top: 36px;
+  border-block: 1px solid var(--color-divider);
+  padding-block: 24px;
+  display: grid;
+  gap: 8px;
+}
+
+.selected-need span {
+  font-size: var(--type-small);
+  color: var(--color-muted);
+}
+
+.selected-need strong {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+.selected-need a {
+  font-size: var(--type-small);
+  width: fit-content;
+  padding-block: 6px;
+}
+
+.contact-copy .contact-note {
   font-size: var(--type-small);
 }
 
 @include mixins.down(variables.$breakpoint-tablet) {
   .contact-inner {
-    gap: 36px;
+    gap: 48px;
   }
 }
-
 @include mixins.down(variables.$breakpoint-mobile) {
+  .contact {
+    padding-block: 56px;
+  }
   .contact-inner {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 36px;
   }
-
-  .contact h2 {
-    margin-top: 0;
-  }
-}
-
-.contact-inner > * {
-  min-width: 0;
 }
