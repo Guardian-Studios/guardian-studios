@@ -3,6 +3,7 @@ import { Button } from "../Button/Button";
 import { Arrow } from "../Arrow/Arrow";
 import { InquirySummary } from "../InquirySummary/InquirySummary";
 import { site } from "../../config/site";
+import { useMotionTransition } from "../../motion/useMotionTransition";
 interface ContactFormProps {
   service: string;
 }
@@ -10,6 +11,7 @@ export function ContactForm({ service }: ContactFormProps) {
   const [summary, setSummary] = useState("");
   const [status, setStatus] = useState("");
   const [previousService, setPreviousService] = useState(service);
+  const motionRef = useMotionTransition<HTMLFormElement>("[role=status]", [status]);
   // Invalidate prepared output while keeping the uncontrolled fields mounted.
   if (previousService !== service) {
     setPreviousService(service);
@@ -35,6 +37,7 @@ export function ContactForm({ service }: ContactFormProps) {
   return (
     <form
       className="contact-form"
+      ref={motionRef}
       onChange={invalidate}
       onSubmit={(event) => {
         event.preventDefault();

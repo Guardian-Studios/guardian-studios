@@ -23,7 +23,20 @@
   height: 100%;
   object-fit: cover;
   object-position: center 58%;
-  animation: portal-open var(--motion-portal) var(--ease-out);
+}
+
+.portal-light {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    var(--color-portal-light) 50%,
+    transparent 65%
+  );
 }
 
 .portal-landscape::after {
@@ -70,16 +83,6 @@
   position: relative;
 }
 
-@keyframes portal-open {
-  from {
-    transform: scale(1.04);
-    filter: brightness(0.7);
-  }
-  to {
-    transform: scale(1);
-    filter: brightness(1);
-  }
-}
 @include mixins.down(variables.$breakpoint-mobile) {
   .hero {
     padding-top: 26px;

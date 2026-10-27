@@ -1,0 +1,73 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.motion-preferences {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+
+.motion-toggle {
+  button {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 44px;
+    padding: 8px 4px;
+    border: 0;
+    color: var(--color-text);
+    background: transparent;
+    font-size: var(--type-small);
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
+  p {
+    font-size: var(--type-caption);
+    padding-bottom: 8px;
+  }
+}
+
+.motion-toggle-state {
+  color: var(--color-muted);
+}
+
+.motion-toggle-track {
+  display: inline-flex;
+  align-items: center;
+  width: 34px;
+  height: 20px;
+  padding: 3px;
+  border: 1px solid var(--color-muted);
+  border-radius: 12px;
+  background: var(--color-surface);
+
+  span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-muted);
+  }
+
+  [aria-checked="true"] & {
+    border-color: var(--color-accent);
+
+    span {
+      margin-left: auto;
+      background: var(--color-accent);
+    }
+  }
+}
+
+.site-footer .motion-toggle {
+  flex-basis: 100%;
+}
+
+@include mixins.down(variables.$breakpoint-mobile) {
+  .motion-preferences {
+    justify-content: flex-start;
+  }
+}

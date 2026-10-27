@@ -9,7 +9,7 @@ The owner supplied the homepage composition and confirmed implementing it. Prese
 - Identity lettering is fixed artwork: use the supplied horizontal SVG at 240px or wider, and the corrected emblem at 40px on narrow screens. Never retype the wordmark. Preserve proportions and clear space.
 - Imagery: jungle, dark architectural stone, brushed metal, cold turquoise light. Use supplied art; keep text in HTML.
 - Reference crops are provisional assets. Replace with full-resolution originals before launch. Portraits and sample work must remain clearly labeled illustrative.
-- Components expose stable section IDs and data-motion hooks. Content remains visible without animation. Begin with hover/focus feedback and one restrained hero entrance; respect reduced motion.
+- Components expose stable section IDs and data-motion hooks. GSAP and ScrollTrigger supply a pronounced portal camera/light entrance, responsive scroll choreography, image wipes, and visible state/interaction transitions. Shared Spanish on/off switches appear above the header and in the footer, persist the visitor's choice, and always defer to system reduced motion. Content remains visible without animation; disabled motion restores the static state immediately, including scroll effects. Preserve native scrolling without pinning or continuous loops.
 - Mobile stacks every split layout, retains visible navigation and a single-column form.
 
 Verification: inspect desktop and mobile together; one batch of corrections and at most one confirmation pass.

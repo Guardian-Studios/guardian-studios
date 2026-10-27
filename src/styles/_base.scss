@@ -96,6 +96,18 @@ textarea {
   }
 }
 
+// The visitor's choice covers CSS feedback and anchor scrolling as well as GSAP.
+html[data-motion="off"] {
+  scroll-behavior: auto;
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 .caption {
   font-size: var(--type-caption) !important;
   color: var(--color-caption);

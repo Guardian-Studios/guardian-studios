@@ -1,13 +1,17 @@
 import { ContactForm } from "../ContactForm/ContactForm";
+import { useMotionTransition } from "../../motion/useMotionTransition";
 interface ContactSectionProps {
   service: string;
 }
 export function ContactSection({ service }: ContactSectionProps) {
+  const motionRef = useMotionTransition<HTMLElement>(".selected-need strong", [service]);
   return (
     <section
       className="contact section"
       id="contacto"
       aria-labelledby="contact-title"
+      data-motion="contact"
+      ref={motionRef}
     >
       <div className="wrap contact-inner">
         <div className="contact-copy">

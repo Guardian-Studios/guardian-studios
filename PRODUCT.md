@@ -24,4 +24,4 @@ Guardian Studios name, corrected emblem and outlined wordmark from the owner’s
 
 ## Capabilities and Constraints
 
-Static first release; semantic HTML, responsive layout, keyboard support and reduced motion. No backend, analytics, or motion framework required yet. Contact destination, domain, hosting, real team, case studies and final artwork remain open. Never invent contact details or claim a message was delivered.
+Static first release; semantic HTML, responsive layout, keyboard support and reduced motion. GSAP Core supplies optional animation, controlled by a persistent visitor switch and system reduced-motion preferences. No backend or analytics required. Contact destination, domain, hosting, real team, case studies and final artwork remain open. Never invent contact details or claim a message was delivered.

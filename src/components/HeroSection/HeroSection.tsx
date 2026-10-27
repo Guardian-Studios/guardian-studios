@@ -18,6 +18,7 @@ export function HeroSection({ service, onServiceChange }: HeroSectionProps) {
             alt=""
             fetchPriority="high"
           />
+          <div className="portal-light" aria-hidden="true" />
         </div>
         <div className="hero-copy wrap">
           <h1 id="hero-title">

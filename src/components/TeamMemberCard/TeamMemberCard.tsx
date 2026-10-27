@@ -4,7 +4,7 @@ interface TeamMemberCardProps {
 }
 export function TeamMemberCard({ person }: TeamMemberCardProps) {
   return (
-    <figure>
+    <figure data-motion-card>
       <img
         src={`/images/${person.image}`}
         alt=""

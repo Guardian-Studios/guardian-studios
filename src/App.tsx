@@ -9,11 +9,12 @@ import { WorkSection } from "./components/WorkSection/WorkSection";
 import { ProcessSection } from "./components/ProcessSection/ProcessSection";
 import { MvpSection } from "./components/MvpSection/MvpSection";
 import { ContactSection } from "./components/ContactSection/ContactSection";
+import { MotionProvider } from "./components/MotionProvider/MotionProvider";
 
 export default function App() {
   const [service, setService] = useState<string>(site.services[0]);
   return (
-    <>
+    <MotionProvider>
       <SkipLink />
       <main id="contenido">
         <HeroSection service={service} onServiceChange={setService} />
@@ -25,6 +26,6 @@ export default function App() {
         <ContactSection service={service} />
       </main>
       <SiteFooter />
-    </>
+    </MotionProvider>
   );
 }

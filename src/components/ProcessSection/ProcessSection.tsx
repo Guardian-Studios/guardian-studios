@@ -1,9 +1,31 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { site } from "../../config/site";
+import { gsap } from "gsap";
+import { useMotionEffect } from "../../motion/useMotionEffect";
+import { motion } from "../../motion/tokens";
 
 export function ProcessSection() {
   const [selected, setSelected] = useState(0);
   const step = site.steps[selected];
+  const motionRef = useRef<HTMLElement>(null);
+  const previous = useRef(selected);
+  useMotionEffect(motionRef, (element) => {
+    const previousStep = previous.current;
+    const direction = selected >= previousStep ? 1 : -1;
+    previous.current = selected;
+    gsap.fromTo(element.querySelector(".process-content"), {
+      x: direction * 48, opacity: 0.4,
+    }, {
+      x: 0, opacity: 1, duration: motion.state,
+      ease: motion.ease, clearProps: "transform,opacity",
+    });
+    element.querySelectorAll(".process-connector-fill").forEach((connector, index) => {
+      gsap.fromTo(connector, { scaleY: index < previousStep ? 1 : 0 }, {
+        scaleY: index < selected ? 1 : 0,
+        duration: motion.continuity, ease: motion.ease,
+      });
+    });
+  }, [selected]);
 
   return (
     <section
@@ -11,6 +33,7 @@ export function ProcessSection() {
       id="proceso"
       aria-labelledby="process-title"
       data-motion="process"
+      ref={motionRef}
     >
       <div className="process-intro">
         <h2 id="process-title">
@@ -27,6 +50,14 @@ export function ProcessSection() {
         <ol className="process-rail" aria-label="Etapas del proceso">
           {site.steps.map((item, index) => (
             <li key={item.title}>
+              {index < site.steps.length - 1 && (
+                <span className="process-connector" aria-hidden="true">
+                  <span
+                    className="process-connector-fill"
+                    style={{ transform: `scaleY(${index < selected ? 1 : 0})` }}
+                  />
+                </span>
+              )}
               <button
                 type="button"
                 aria-pressed={selected === index}

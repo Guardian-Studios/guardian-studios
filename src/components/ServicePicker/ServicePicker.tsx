@@ -1,6 +1,7 @@
 import { ActionLink } from "../ActionLink/ActionLink";
 import { Arrow } from "../Arrow/Arrow";
 import { site } from "../../config/site";
+import { useMotionTransition } from "../../motion/useMotionTransition";
 interface ServicePickerProps {
   service: string;
   onServiceChange: (service: string) => void;
@@ -11,8 +12,9 @@ export function ServicePicker({
 }: ServicePickerProps) {
   const index = site.services.findIndex((item) => item === service);
   const prompt = site.servicePrompts[index < 0 ? 2 : index];
+  const motionRef = useMotionTransition<HTMLDivElement>(".service-context", [service]);
   return (
-    <div className="service-picker" id="servicios">
+    <div className="service-picker" id="servicios" ref={motionRef}>
       <fieldset>
         <legend>Elegí tu punto de partida</legend>
         <div className="service-options">

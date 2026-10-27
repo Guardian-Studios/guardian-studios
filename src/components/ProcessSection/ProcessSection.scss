@@ -32,8 +32,7 @@
   li {
     position: relative;
   }
-  li:not(:last-child)::after {
-    content: "";
+  .process-connector {
     position: absolute;
     left: 20px;
     top: 58px;
@@ -68,6 +67,14 @@
       border-color: var(--color-accent);
     }
   }
+}
+
+.process-connector-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-accent);
+  transform-origin: top;
 }
 
 .process-rail-number {
@@ -173,7 +180,7 @@
   .process-rail button {
     min-height: 66px;
   }
-  .process-rail li:not(:last-child)::after {
+  .process-rail .process-connector {
     top: 50px;
     bottom: -16px;
   }

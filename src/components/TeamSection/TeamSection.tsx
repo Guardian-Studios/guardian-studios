@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { site } from "../../config/site";
+import { useMotionTransition } from "../../motion/useMotionTransition";
 
 export function TeamSection() {
   const [selected, setSelected] = useState(0);
   const person = site.team[selected];
+  const motionRef = useMotionTransition<HTMLElement>(
+    ".team-portrait img:not([hidden]), .team-feature figcaption",
+    [selected],
+  );
 
   return (
     <section
@@ -11,6 +16,7 @@ export function TeamSection() {
       id="equipo"
       aria-labelledby="team-title"
       data-motion="team"
+      ref={motionRef}
     >
       <div className="team-intro">
         <h2 id="team-title">Conocé al equipo</h2>
